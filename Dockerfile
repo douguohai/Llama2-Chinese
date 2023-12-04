@@ -4,6 +4,7 @@ FROM ubuntu:22.04
 # 安装Python编译依赖，下载并编译Python，并设置Python 3.10为默认Python版本
 RUN apt-get update && apt-get install -y \
     wget \
+    git \
     build-essential \
     libssl-dev \
     zlib1g-dev \
