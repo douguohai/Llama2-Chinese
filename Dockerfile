@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
     && update-alternatives --install /usr/bin/python python /usr/local/bin/python3.10 1 \
     && update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.10 1 \
     && rm -rf /tmp/Python-3.10.12.tar.xz \
-    && pip install --upgrade pip
+    && pip install --upgrade pip && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 #设置工作目录
 WORKDIR /root/Llama2-Chinese
