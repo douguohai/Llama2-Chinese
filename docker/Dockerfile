@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
     && make altinstall \
     && update-alternatives --install /usr/bin/python python /usr/local/bin/python3.10 1 \
     && update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.10 1 \
-    && rm -rf /tmp/Python-3.10.12.tar.xz /tmp/Python-3.10.12 \
+    && rm -rf /tmp/Python-3.10.12.tar.xz \
     && apt-get install -y git \
     && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
     && apt-get install -y git-lfs \
@@ -42,7 +42,8 @@ RUN git clone https://github.com/FlagAlpha/Llama2-Chinese.git /root/Llama2-Chine
 RUN pip install -r requirements.txt
 
 #克隆Hugging Face仓库
-RUN  git clone https://huggingface.co/FlagAlpha/Llama2-Chinese-7b-Chat
+RUN GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/FlagAlpha/Llama2-Chinese-7b-Chat
+RUN cd Llama2-Chinese-7b-Chat && git lfs pull
 
 #开启7860端口
 EXPOSE 7860 
